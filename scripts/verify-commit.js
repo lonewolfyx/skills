@@ -7,7 +7,7 @@ const msgPath = path.resolve('.git/COMMIT_EDITMSG')
 const msg = readFileSync(msgPath, 'utf-8').trim()
 
 const commitRE
-    = /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?: .{1,50}/
+    = /^(revert: )?(feat|fix|docs|dx|style|refactor|perf|test|workflow|build|ci|chore|types|wip|release)(\(.+\))?(!)?: .{1,50}/
 
 if (!commitRE.test(msg)) {
     console.log()
@@ -21,6 +21,9 @@ if (!commitRE.test(msg)) {
         }    ${pico.green(`feat(compiler): add 'comments' option`)}\n`
         + `    ${pico.green(
             `fix(v-model): handle events on blur (close #28)`,
+        )}\n`
+        + `    ${pico.green(
+            `feat(api)!: remove legacy token endpoint`,
         )}\n\n${
             pico.red(`  See .github/commit-convention.md for more details.\n`)}`,
     )
