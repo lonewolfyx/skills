@@ -1,0 +1,12 @@
+# Skills
+
+Reusable AI assistant skills for code review, conventions, and development workflows.
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `git-commit-message` | Generate Conventional Commits / Angular-style commit messages |
+| `review-code-quality` | Code review with reviewer mindset: bugs, coupling, maintainability |
+| `ts-type-naming` | TypeScript type naming: `I` prefix for interfaces, camelCase for types |
+| `code-convergence-and-abstraction-boundary` | Enforce code convergence and abstraction boundary discipline |
