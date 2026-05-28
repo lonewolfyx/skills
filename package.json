@@ -4,10 +4,15 @@
     "version": "0.0.0",
     "private": true,
     "packageManager": "pnpm@10.33.2",
-    "description": "",
-    "author": "",
+    "description": "curated collection of agent skills.",
+    "author": "lonewolfyx",
     "license": "MIT",
-    "keywords": [],
+    "homepage": "https://github.com/lonewolfyx/skills#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lonewolfyx/skills.git"
+    },
+    "bugs": "https://github.com/lonewolfyx/skills/issues",
     "scripts": {
         "lint": "eslint .",
         "lint:fix": "eslint --fix"
