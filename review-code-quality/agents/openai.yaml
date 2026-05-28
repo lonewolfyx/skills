@@ -1,4 +1,4 @@
 interface:
-  display_name: "Code Quality Review"
-  short_description: "Review code quality and maintainability"
-  default_prompt: "Use $review-code-quality to review this code for readability, maintainability, structure, and code smells."
+  display_name: Code Quality Review
+  short_description: Review code quality and maintainability
+  default_prompt: 'Use $review-code-quality to review this code for readability, maintainability, structure, and code smells.'

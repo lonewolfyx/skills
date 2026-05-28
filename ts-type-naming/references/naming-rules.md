@@ -18,28 +18,28 @@ Consistent naming conventions improve code readability and make it immediately c
 ```typescript
 // Bad
 interface User {
-  name: string;
+    name: string
 }
 
 interface apiConfig {
-  baseUrl: string;
+    baseUrl: string
 }
 
 interface data_type {
-  value: unknown;
+    value: unknown
 }
 
 // Good
 interface IUser {
-  name: string;
+    name: string
 }
 
 interface IApiConfig {
-  baseUrl: string;
+    baseUrl: string
 }
 
 interface IDataType {
-  value: unknown;
+    value: unknown
 }
 ```
 
@@ -47,49 +47,49 @@ interface IDataType {
 
 ```typescript
 // Bad
-type UserRole = 'admin' | 'user' | 'guest';
+type UserRole = 'admin' | 'user' | 'guest'
 
-type APIResponse<T> = {
-  data: T;
-  status: number;
-};
+interface APIResponse<T> {
+    data: T
+    status: number
+}
 
-type Theme = 'light' | 'dark';
+type Theme = 'light' | 'dark'
 
 // Good
-type userRole = 'admin' | 'user' | 'guest';
+type userRole = 'admin' | 'user' | 'guest'
 
-type apiResponse<T> = {
-  data: T;
-  status: number;
-};
+interface apiResponse<T> {
+    data: T
+    status: number
+}
 
-type theme = 'light' | 'dark';
+type theme = 'light' | 'dark'
 ```
 
 ### Complex / Nested Types
 
 ```typescript
 // Bad
-type FetchOptions = {
-  headers: Record<string, string>;
-  timeout: number;
-};
+interface FetchOptions {
+    headers: Record<string, string>
+    timeout: number
+}
 
 interface ResponseWrapper<T> {
-  result: T;
-  error: string | null;
+    result: T
+    error: string | null
 }
 
 // Good
-type fetchOptions = {
-  headers: Record<string, string>;
-  timeout: number;
-};
+interface fetchOptions {
+    headers: Record<string, string>
+    timeout: number
+}
 
 interface IResponseWrapper<T> {
-  result: T;
-  error: string | null;
+    result: T
+    error: string | null
 }
 ```
 
@@ -115,12 +115,12 @@ When renaming type aliases used in unions/intersections, update all references:
 
 ```typescript
 // Before
-type Status = 'active' | 'inactive';
-type ApiResponse = { status: Status; data: unknown; };
+type Status = 'active' | 'inactive'
+interface ApiResponse { status: Status, data: unknown }
 
 // After
-type status = 'active' | 'inactive';
-type apiResponse = { status: status; data: unknown; };
+type status = 'active' | 'inactive'
+interface apiResponse { status: status, data: unknown }
 ```
 
 ## Migration Strategy
