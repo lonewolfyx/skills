@@ -77,4 +77,5 @@ Reference files are the source of truth. SKILL.md should link to them and summar
 | `git-commit-message` | Generating or reviewing git commit messages |
 | `review-code-quality` | Auditing code for readability, maintainability, bugs, coupling |
 | `ts-type-naming` | Enforcing TypeScript type naming conventions (`I` prefix for interfaces, camelCase for types) |
+| `naming-convention` | Enforcing naming conventions for functions, constants, variables, and config parameters |
 | `code-convergence-and-abstraction-boundary` | Detecting duplicate logic, enforcing abstraction boundaries, convergence rules |

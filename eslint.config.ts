@@ -20,6 +20,7 @@ const config = antfu({
         '**/git-commit-message/**',
         '**/review-code-quality/**',
         '**/ts-type-naming/**',
+        '**/naming-convention/**',
     ],
 }) as Linter.Config
 

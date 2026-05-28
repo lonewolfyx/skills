@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv 00-naming-rules.md 00-naming-rules.md.tmp)",
+      "Bash(mv 10-scenario-based-naming.md 01-scenario-based-naming.md.tmp)",
+      "Bash(mv 00-naming-rules.md.tmp 00-naming-rules.md)",
+      "Bash(mv 01-scenario-based-naming.md.tmp 01-scenario-based-naming.md)"
+    ]
+  }
+}
