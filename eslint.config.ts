@@ -2,15 +2,13 @@ import type { Linter } from 'eslint'
 import antfu from '@antfu/eslint-config'
 
 const config = antfu({
-    type: 'lib',
+    markdown: true,
     stylistic: {
         indent: 4,
         quotes: 'single',
     },
     rules: {
-        'no-console': 'off',
         'node/prefer-global/process': 'off',
-        'antfu/top-level-function': 'off',
         'regexp/no-unused-capturing-group': 'off',
     },
     yaml: {
@@ -18,6 +16,11 @@ const config = antfu({
             'yaml/indent': ['error', 2],
         },
     },
+    ignores: [
+        '**/git-commit-message/**',
+        '**/review-code-quality/**',
+        '**/ts-type-naming/**',
+    ],
 }) as Linter.Config
 
 export default config
