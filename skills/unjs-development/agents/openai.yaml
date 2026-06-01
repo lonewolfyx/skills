@@ -1,0 +1,4 @@
+interface:
+  display_name: UnJS Development
+  short_description: Select suitable UnJS packages and best practices by development scenario
+  default_prompt: Use $unjs-development to choose the right UnJS packages and implementation practices for this JavaScript or TypeScript development task.
