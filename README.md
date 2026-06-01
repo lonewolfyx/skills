@@ -11,3 +11,4 @@ Reusable AI assistant skills for code review, conventions, and development workf
 | `ts-type-naming` | TypeScript type naming: `I` prefix for interfaces, camelCase for types |
 | `naming-convention` | Naming conventions for functions, constants, variables, and config parameters |
 | `code-convergence-and-abstraction-boundary` | Enforce code convergence and abstraction boundary discipline |
+| `unjs-development` | Choose suitable UnJS packages by scenario and apply ecosystem best practices |
