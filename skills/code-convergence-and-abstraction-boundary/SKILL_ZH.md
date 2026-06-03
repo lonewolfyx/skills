@@ -1,17 +1,31 @@
 ---
 name: code-convergence-and-abstraction-boundary
-description: 在本项目中编写、重构、评审或清理代码时使用，用于执行代码收敛与抽象边界规则。适用于重复逻辑、伪抽象、薄包装、重复类型、重复 UI / 状态 / API / 样式 / 配置 / 测试 / 文档结构、伪架构、复杂度失控、镜像常量、镜像变量、镜像函数体、派生镜像和中间镜像常量。
+description: 当需要检测重复逻辑、判断是否收敛重复代码，或评审抽象边界、薄包装、伪架构、镜像值、复杂度失控和概念漂移时使用。
 ---
 
 # 代码收敛与抽象边界
 
-当在本仓库中进行任何代码实现、重构、清理或评审，并且涉及重复、抽象边界、命名收敛、共享逻辑或架构形态时，使用这个 skill。
+当代码实现、重构、清理或评审需要判断重复、收敛、抽象边界、命名收敛、共享逻辑或架构形态时，使用这个 skill。
 
 ## Reference Map
 
 始终先阅读 [references/00-goals-principles.md](references/00-goals-principles.md)、[references/01-convergence-triggers.md](references/01-convergence-triggers.md) 和 [references/02-non-convergence-exceptions.md](references/02-non-convergence-exceptions.md)。然后阅读所有与当前修改文件或行为匹配的 reference 文件。
 
-对于大范围重构、清理、代码评审或跨模块修改，阅读所有 reference 文件。
+使用下面的路由表，让 reference 加载保持聚焦：
+
+- 函数、回调、校验器、格式化器、兜底处理或重复业务决策：阅读 [references/10-duplicate-functions-logic.md](references/10-duplicate-functions-logic.md) 和 [references/30-function-convergence.md](references/30-function-convergence.md)。
+- 薄包装、helper 层、composable、hook、adapter、interface 或第三方 facade：阅读 [references/11-thin-wrappers-pseudo-encapsulation.md](references/11-thin-wrappers-pseudo-encapsulation.md)；涉及架构层时再读 [references/25-pseudo-architecture.md](references/25-pseudo-architecture.md)。
+- 类型、interface、enum、DTO、VO、Form、Model、const map 或运行时 / 类型值域：阅读 [references/12-types-pseudo-types.md](references/12-types-pseudo-types.md) 和 [references/31-type-convergence.md](references/31-type-convergence.md)。
+- 组件、composable、hook、props、emits、slots、UI 行为或 UI variant：阅读 [references/13-components-composables.md](references/13-components-composables.md) 和 [references/32-component-convergence.md](references/32-component-convergence.md)。
+- API 请求、请求构造、响应规范化、缓存、重试、超时或取消：阅读 [references/14-api-requests.md](references/14-api-requests.md) 和 [references/33-request-convergence.md](references/33-request-convergence.md)。
+- 状态、store、URL query state、server state、筛选、分页、排序、缓存、刷新或异步状态：阅读 [references/15-state-store.md](references/15-state-store.md) 和 [references/34-state-convergence.md](references/34-state-convergence.md)。
+- 事件、订阅、定时器、watcher、listener 或副作用清理：阅读 [references/16-events-side-effects.md](references/16-events-side-effects.md)。
+- Tailwind、design token、CSS variable、class helper、暗黑模式、响应式布局或基础 UI 样式：阅读 [references/17-style-ui-variants.md](references/17-style-ui-variants.md) 和 [references/35-style-convergence.md](references/35-style-convergence.md)。
+- Magic value、常量、路由、key、正则、默认值、镜像值或派生 alias：阅读 [references/18-magic-values-constants.md](references/18-magic-values-constants.md) 和 [references/27-mirrors.md](references/27-mirrors.md)。
+- 命名漂移、概念漂移、模糊工具目录、公共导入路径、文件、目录或 barrel export：阅读 [references/19-naming-concept-drift.md](references/19-naming-concept-drift.md) 和 [references/24-files-directories.md](references/24-files-directories.md)。
+- 配置、依赖能力重叠、测试、文档、注释或复杂度：按需阅读 [references/20-config-templates.md](references/20-config-templates.md)、[references/21-dependencies.md](references/21-dependencies.md)、[references/22-tests.md](references/22-tests.md)、[references/23-docs-comments.md](references/23-docs-comments.md) 和 [references/26-complexity.md](references/26-complexity.md)。
+
+只有在大范围重构、清理、代码评审，或修改跨越许多类别和模块边界时，才阅读所有 reference 文件。
 
 核心决策文件：
 
@@ -51,6 +65,15 @@ description: 在本项目中编写、重构、评审或清理代码时使用，�
 
 reference 文件是这个 skill 的完整事实来源。必须严格应用。
 
+## Decision Order
+
+1. 判断重复代码是否具有相同行为和相同业务语义。
+2. 检查它是否跨文件、模块、页面、工作流、归属边界或公共入口。
+3. 检查未来修改是否很可能需要协同变更。
+4. 如果重复稳定且变更耦合，把它收敛到最小语义 owner 下。
+5. 如果收敛会隐藏不同语义、增加调用方复杂度或引入过多参数，保留分离实现并引用适用例外。
+6. 如果抽取缺少语义价值、稳定入口、真实变化点隔离、类型或行为统一，或无法降低维护 / 测试 / 调用方成本，拒绝抽取。
+
 ## Operating Rules
 
 - 将 reference 规则作为强制项目约束执行。
@@ -80,3 +103,11 @@ reference 文件是这个 skill 的完整事实来源。必须严格应用。
 - 当实现受到收敛或边界判断影响时，说明主要判断。
 - 如果保留重复，说明命中了 reference 中哪个允许例外。
 - 如果拒绝或删除抽象，说明该抽象缺少哪种具体价值。
+- 进行代码评审时，报告收敛问题可使用以下结构：
+  - Finding：重复或违反边界的代码。
+  - Trigger：为什么需要收敛或边界评审。
+  - Current owners：当前行为、类型、样式、状态或 API 出现在哪里。
+  - Recommended trusted owner：共享规则的最小语义 owner。
+  - Reference：使用的具体 reference 文件和规则族。
+  - Decision：收敛、按例外保留分离，或删除抽象。
+  - Migration/testing notes：兼容性或验证工作。

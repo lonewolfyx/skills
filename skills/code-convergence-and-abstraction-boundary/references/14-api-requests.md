@@ -29,3 +29,9 @@ Use this reference when adding or changing API calls, URLs, paths, query paramet
 13. Do not leak raw API response structures into all page layers unless the response is already a stable ViewModel.
 14. Do not scatter cache, retry, timeout, or cancellation logic across call sites.
 
+## Additional Constraints
+
+1. Auth headers, tenant identifiers, locale headers, trace IDs, idempotency keys, and feature-flag request parameters must have one construction boundary.
+2. Endpoint-specific error classification must live with the endpoint client, service, or response normalizer instead of page-level catch blocks.
+3. Request deduplication, cancellation, retry, timeout, polling, and cache invalidation must be configured once per endpoint behavior.
+4. Do not bypass response normalization to access raw response shapes unless the raw shape is the explicit public contract for that caller.

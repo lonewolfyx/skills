@@ -26,3 +26,9 @@ Use this reference when adding or changing directories, files, barrel exports, `
 10. Do not expose the same capability through both deep paths and root entries without a recommendation.
 11. Do not let directory structure express boundaries that code dependencies violate.
 
+## Additional Constraints
+
+1. Create shared, common, utils, helpers, or core directories only when the directory has a clear ownership boundary and stable consumers.
+2. Do not move code into a shared directory to avoid choosing the correct domain owner.
+3. Public barrel exports must not expose multiple import paths for the same capability.
+4. File names must reflect the semantic owner rather than the implementation pattern alone, such as helper, manager, or service.

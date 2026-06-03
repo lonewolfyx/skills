@@ -27,3 +27,9 @@ Use this reference when functions, classes, modules, conditional expressions, `i
 9. Do not make one module handle requests, state, conversion, rendering, errors, cache, and side effects at the same time.
 10. Do not reduce function count at the cost of readability.
 
+## Additional Constraints
+
+1. Complexity reduction must preserve business rule visibility; do not hide important decisions behind generic parameters or opaque strategy names.
+2. Extracted functions must have stable inputs, outputs, and error semantics.
+3. Splitting a function must reduce responsibility mixing, nesting, or change risk; do not split solely to satisfy line-count targets.
+4. When using tables, strategies, or state machines, name the represented business states and transitions explicitly.

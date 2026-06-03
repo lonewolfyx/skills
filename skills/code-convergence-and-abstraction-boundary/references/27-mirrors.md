@@ -20,3 +20,28 @@ Use this reference when adding variables, constants, temporary values, derived v
 4. Do not create derived mirrors.
 5. Do not create intermediate mirror constants.
 
+
+## Definitions
+
+A mirror constant, variable, or function is a new binding whose value or behavior is the same as another trusted source and whose name does not add domain meaning, boundary ownership, or a real variation point.
+
+A derived mirror is a lightly transformed copy that can drift from the source without owning a distinct business rule.
+
+Allowed intermediate values must satisfy at least one condition: name a complex expression, express a business predicate, avoid repeated computation, prevent an ordering or correctness bug, or document a boundary-specific conversion.
+
+## Examples
+
+```ts
+// Bad: mirror value with no new semantics.
+const activeStatus = USER_STATUS.ACTIVE
+
+// Good: business predicate names a decision, not a mirror.
+const canInviteUser = user.status === USER_STATUS.ACTIVE && user.invitesRemaining > 0
+```
+
+## Additional Constraints
+
+1. A new binding that only shortens an import path, renames a value, or relays a function call is a mirror unless it establishes a public API boundary.
+2. A derived value must document the rule that makes it different from the source value.
+3. Do not keep both a source value and a cached derived value writable unless the synchronization owner is explicit.
+4. Intermediate variables are allowed for readability only when the name captures a condition, decision, or transformation that is not obvious from the expression itself.

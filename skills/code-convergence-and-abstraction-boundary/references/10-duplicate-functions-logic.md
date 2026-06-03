@@ -32,3 +32,18 @@ Use this reference when functions, inline callbacks, conditionals, state checks,
 16. Do not allow small repeated implementations of the same logic to accumulate in multiple files.
 17. Do not rename, split, or rewrite code only to avoid being recognized as duplicate logic.
 
+
+## Examples
+
+Avoid duplicate formatters with different names when they implement the same display rule:
+
+```ts
+// Bad: two trusted owners for the same display rule.
+const formatInvoiceTotal = (value: number) => `$${value.toFixed(2)}`
+const formatPaymentAmount = (value: number) => `$${value.toFixed(2)}`
+
+// Good: one named business rule.
+const formatMoney = (value: number) => `$${value.toFixed(2)}`
+```
+
+Keep repetition local only when the repeated code is not a stable shared rule and extraction would make call sites harder to understand.

@@ -29,3 +29,9 @@ Use this reference when changing `tsconfig`, ESLint, Vite, Vitest, Tailwind, tsu
 12. Do not define environment variables in scattered places without schema validation.
 13. Do not let lint, format, test, or build rules behave inconsistently across packages.
 
+## Additional Constraints
+
+1. Environment variable names, feature-flag names, build modes, and runtime defaults must have one documented owner.
+2. Shared scripts must not diverge silently across packages; differences must be parameterized or explained by package-specific constraints.
+3. Do not duplicate lint, test, bundler, or TypeScript rules in local config files when a shared config already owns the rule.
+4. Configuration overrides must name the boundary or constraint that requires the override.

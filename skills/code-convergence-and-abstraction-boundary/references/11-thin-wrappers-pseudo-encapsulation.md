@@ -36,3 +36,17 @@ Use this reference before adding a wrapper, service, manager, helper, composable
 3. Cross-platform, cross-runtime, or cross-framework adapters are allowed.
 4. Interfaces for testing, dependency injection, or plugin systems are allowed.
 
+
+## Examples
+
+Avoid wrappers that only rename or forward a call:
+
+```ts
+// Bad: no new semantics, boundary, or variation point.
+const getUser = (id: string) => api.getUser(id)
+
+// Good: the wrapper owns response normalization and the public domain entry point.
+const getUserProfile = async (id: UserId) => normalizeUserProfile(await api.getUser(id))
+```
+
+A wrapper is valid when it protects callers from a third-party API shape, owns a business boundary, or provides a real substitution point for tests or runtime adapters.
