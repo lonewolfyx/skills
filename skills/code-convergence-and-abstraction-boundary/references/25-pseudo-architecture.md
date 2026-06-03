@@ -33,3 +33,17 @@ Use design patterns only when real variation points and real complexity exist.
 11. Do not design registries or factories before extension scenarios exist.
 12. Do not sacrifice current readability for hypothetical extensibility.
 
+
+## Examples
+
+Avoid layers that only pass data through:
+
+```ts
+// Bad: controller -> service -> repository all forward the same call unchanged.
+const userService = { find: (id: string) => userRepository.find(id) }
+
+// Good: a repository boundary owns persistence concerns and a service owns a business decision.
+const canDeactivateUser = async (id: UserId) => !(await userRepository.hasOpenInvoices(id))
+```
+
+Introduce adapters, providers, factories, registries, or plugin systems only after a real extension point, runtime variation, dependency boundary, or public API stability need exists.
