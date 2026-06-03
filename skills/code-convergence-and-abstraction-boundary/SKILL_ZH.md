@@ -1,6 +1,6 @@
 ---
 name: code-convergence-and-abstraction-boundary
-description: 凡是在某项目中进行代码开发、编写、重构、审查或清理时使用，以强制执行该存储库的代码收敛与抽象边界规则。
+description: 凡是在项目中进行代码开发、编写、重构、审查或清理时使用，以强制执行该存储库的代码收敛与抽象边界规则。
 ---
 
 # 代码收敛与抽象边界
