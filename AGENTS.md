@@ -41,9 +41,9 @@ description: <one-line description used for skill discovery>
 
 ```yaml
 interface:
-  display_name: "<Human-readable name>"
-  short_description: "<Short description>"
-  default_prompt: "Use $<skill-name> to <purpose>."
+  display_name: <Human-readable name>
+  short_description: <Short description>
+  default_prompt: Use $<skill-name> to <purpose>.
 policy:
   allow_implicit_invocation: true
 ```
@@ -78,4 +78,4 @@ Reference files are the source of truth. SKILL.md should link to them and summar
 | `review-code-quality` | Auditing code for readability, maintainability, bugs, coupling |
 | `ts-type-naming` | Enforcing TypeScript type naming conventions (`I` prefix for interfaces, camelCase for types) |
 | `naming-convention` | Enforcing naming conventions for functions, constants, variables, and config parameters |
-| `code-convergence-and-abstraction-boundary` | Detecting duplicate logic, enforcing abstraction boundaries, convergence rules |
+| `code-convergence-and-abstraction-boundary` | Developing, writing, refactoring, reviewing, or cleaning project code to enforce repository code convergence and abstraction boundary rules |

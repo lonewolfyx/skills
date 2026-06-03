@@ -1,6 +1,6 @@
 ---
 name: code-convergence-and-abstraction-boundary
-description: 当需要检测重复逻辑、判断是否收敛重复代码，或评审抽象边界、薄包装、伪架构、镜像值、复杂度失控和概念漂移时使用。
+description: 凡是在项目中进行代码开发、编写、重构、审查或清理时使用，以强制执行该存储库的代码收敛与抽象边界规则。
 ---
 
 # 代码收敛与抽象边界
