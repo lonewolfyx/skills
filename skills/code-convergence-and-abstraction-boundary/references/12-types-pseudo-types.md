@@ -39,3 +39,19 @@ const userRoles = ['admin', 'member', 'guest'] as const
 type UserRole = typeof userRoles[number]
 ```
 
+
+## Examples
+
+Do not duplicate identical shapes only to express naming layers:
+
+```ts
+// Bad: same structure and lifecycle under different names.
+interface IUserDto { id: string, name: string }
+interface IUserModel { id: string, name: string }
+
+// Good: derive a narrower form only where fields or lifecycle differ.
+interface IUser { id: string, name: string }
+type UserForm = Pick<IUser, 'name'>
+```
+
+Split DTO, Form, Model, or View types only when data ownership, validation timing, optionality, lifecycle, or business semantics differ.

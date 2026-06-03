@@ -1,17 +1,31 @@
 ---
 name: code-convergence-and-abstraction-boundary
-description: Use when writing, refactoring, reviewing, or cleaning code in this project to enforce the repository's code convergence and abstraction boundary rules. Applies to duplicate logic, fake abstractions, thin wrappers, repeated types, repeated UI/state/API/style/config/test/docs structures, pseudo-architecture, uncontrolled complexity, mirror constants, mirror variables, mirror function bodies, derived mirrors, and intermediate mirror constants.
+description: Use when detecting duplicate logic, deciding whether to converge repeated code, or reviewing abstraction boundaries, thin wrappers, pseudo-architecture, mirror values, uncontrolled complexity, and concept drift.
 ---
 
 # Code Convergence and Abstraction Boundary
 
-Use this skill for any code implementation, refactor, cleanup, or review in this repository where duplication, abstraction boundaries, naming convergence, shared logic, or architectural shape are involved.
+Use this skill when code implementation, refactor, cleanup, or review requires a judgment about duplication, convergence, abstraction boundaries, naming convergence, shared logic, or architectural shape.
 
 ## Reference Map
 
 Always read [references/00-goals-principles.md](references/00-goals-principles.md), [references/01-convergence-triggers.md](references/01-convergence-triggers.md), and [references/02-non-convergence-exceptions.md](references/02-non-convergence-exceptions.md) first. Then read every reference file that matches the files or behavior being changed.
 
-Read all reference files for broad refactors, cleanup work, code reviews, or changes that cross module boundaries.
+Use this routing table to keep reference loading focused:
+
+- Functions, callbacks, validators, formatters, fallback handling, or repeated business decisions: read [references/10-duplicate-functions-logic.md](references/10-duplicate-functions-logic.md) and [references/30-function-convergence.md](references/30-function-convergence.md).
+- Thin wrappers, helper layers, composables, hooks, adapters, interfaces, or third-party facades: read [references/11-thin-wrappers-pseudo-encapsulation.md](references/11-thin-wrappers-pseudo-encapsulation.md) and, for architectural layers, [references/25-pseudo-architecture.md](references/25-pseudo-architecture.md).
+- Types, interfaces, enums, DTOs, VOs, Forms, Models, const maps, or runtime/type value domains: read [references/12-types-pseudo-types.md](references/12-types-pseudo-types.md) and [references/31-type-convergence.md](references/31-type-convergence.md).
+- Components, composables, hooks, props, emits, slots, UI behavior, or UI variants: read [references/13-components-composables.md](references/13-components-composables.md) and [references/32-component-convergence.md](references/32-component-convergence.md).
+- API requests, request construction, response normalization, cache, retry, timeout, or cancellation: read [references/14-api-requests.md](references/14-api-requests.md) and [references/33-request-convergence.md](references/33-request-convergence.md).
+- State, stores, URL query state, server state, filters, pagination, sorting, cache, refresh, or async state: read [references/15-state-store.md](references/15-state-store.md) and [references/34-state-convergence.md](references/34-state-convergence.md).
+- Events, subscriptions, timers, watchers, listeners, or side-effect cleanup: read [references/16-events-side-effects.md](references/16-events-side-effects.md).
+- Tailwind, design tokens, CSS variables, class helpers, dark mode, responsive layout, or base UI styles: read [references/17-style-ui-variants.md](references/17-style-ui-variants.md) and [references/35-style-convergence.md](references/35-style-convergence.md).
+- Magic values, constants, routes, keys, regexes, defaults, mirrors, or derived aliases: read [references/18-magic-values-constants.md](references/18-magic-values-constants.md) and [references/27-mirrors.md](references/27-mirrors.md).
+- Naming drift, concept drift, vague utility buckets, public import paths, files, directories, or barrel exports: read [references/19-naming-concept-drift.md](references/19-naming-concept-drift.md) and [references/24-files-directories.md](references/24-files-directories.md).
+- Configuration, dependency capability overlap, tests, docs, comments, or complexity: read the matching files from [references/20-config-templates.md](references/20-config-templates.md), [references/21-dependencies.md](references/21-dependencies.md), [references/22-tests.md](references/22-tests.md), [references/23-docs-comments.md](references/23-docs-comments.md), and [references/26-complexity.md](references/26-complexity.md).
+
+Read all reference files only for broad refactors, cleanup work, code reviews, or changes that cross many categories and module boundaries.
 
 Core decision files:
 
@@ -51,6 +65,15 @@ Convergence practice files:
 
 The reference files are the complete source of truth for this skill. Apply them exactly.
 
+## Decision Order
+
+1. Identify whether repeated code has the same behavior and the same business semantics.
+2. Check whether it crosses files, modules, pages, workflows, ownership boundaries, or public entry points.
+3. Check whether future changes are likely to be coordinated.
+4. If the repetition is stable and change-coupled, converge it under the smallest semantic owner.
+5. If convergence would hide different semantics, increase caller complexity, or add excessive parameters, keep implementations separate and cite the applicable exception.
+6. Reject extraction when it lacks semantic value, a stable entry point, real variation isolation, type or behavior unification, or measurable maintenance/test/caller-cost reduction.
+
 ## Operating Rules
 
 - Enforce the reference rules as mandatory project constraints.
@@ -80,3 +103,11 @@ When touching code, check for:
 - Mention the main convergence or boundary decision when it affects the implementation.
 - If leaving repetition in place, state which allowed exception from the reference applies.
 - If rejecting or removing an abstraction, state the concrete missing value.
+- For code reviews, use this structure when reporting a convergence issue:
+  - Finding: duplicated or boundary-violating code.
+  - Trigger: why convergence or boundary review is required.
+  - Current owners: where the behavior, type, style, state, or API appears today.
+  - Recommended trusted owner: the smallest semantic owner for the shared rule.
+  - Reference: the specific reference file and rule family used.
+  - Decision: converge, keep separate under an exception, or remove the abstraction.
+  - Migration/testing notes: compatibility or verification work needed.
