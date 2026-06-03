@@ -28,3 +28,9 @@ Before adding a dependency, answer:
 9. Do not wrap capabilities that a third-party library already provides unless the wrapper adds boundary value.
 10. Do not mix custom utilities and third-party utilities for the same capability inside the same module.
 
+## Additional Constraints
+
+1. Before adding a dependency, check whether an existing dependency, standard library capability, or project utility already covers the same behavior.
+2. Do not introduce a dependency for a single simple helper unless it removes substantial risk, complexity, or maintenance cost.
+3. Do not keep multiple dependencies that solve the same formatting, validation, request, date, state, styling, or test-helper problem without a documented boundary.
+4. Dependency wrappers must expose project semantics, not the dependency's generic API under a new name.

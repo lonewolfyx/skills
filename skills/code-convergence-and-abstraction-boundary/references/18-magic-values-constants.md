@@ -30,3 +30,9 @@ Use this reference when code contains business status strings, endpoint paths, e
 14. Do not define the same default value repeatedly.
 15. Do not maintain the same constant separately in multiple modules.
 
+## Additional Constraints
+
+1. Permission keys, feature flags, storage keys, route names, query keys, event names, analytics names, and cache keys must have one source of truth.
+2. Defaults that affect behavior, limits, retries, timeouts, pagination, or validation must be named at the boundary that owns the rule.
+3. Do not create constants for values that are only used once unless the name expresses a business rule, public contract, or external dependency.
+4. Do not duplicate a constant under local names to avoid importing the trusted source.

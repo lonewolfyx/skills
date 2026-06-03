@@ -38,3 +38,10 @@ const activeStatus = USER_STATUS.ACTIVE
 // Good: business predicate names a decision, not a mirror.
 const canInviteUser = user.status === USER_STATUS.ACTIVE && user.invitesRemaining > 0
 ```
+
+## Additional Constraints
+
+1. A new binding that only shortens an import path, renames a value, or relays a function call is a mirror unless it establishes a public API boundary.
+2. A derived value must document the rule that makes it different from the source value.
+3. Do not keep both a source value and a cached derived value writable unless the synchronization owner is explicit.
+4. Intermediate variables are allowed for readability only when the name captures a condition, decision, or transformation that is not obvious from the expression itself.

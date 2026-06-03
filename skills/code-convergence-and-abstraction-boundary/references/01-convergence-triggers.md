@@ -22,3 +22,9 @@ Use this reference when code contains duplicated behavior, near-duplicate implem
 3. Do not keep the same capability under different names in different modules.
 4. Do not keep code that has no independent responsibility and only exists to look architectural.
 
+## Additional Constraints
+
+1. Treat duplicated authorization, permission, tenancy, feature-flag, validation, and normalization rules as mandatory convergence candidates.
+2. Treat duplicated side-effect ordering, cleanup behavior, cache invalidation, retry logic, or error classification as convergence candidates even when the surrounding code differs.
+3. Treat repeated cross-file fallbacks for the same missing data shape as a sign that the data boundary or normalizer is missing.
+4. Trigger convergence when two implementations must be updated in the same release note, migration note, bug fix, or incident remediation.

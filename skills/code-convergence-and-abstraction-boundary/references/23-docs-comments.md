@@ -29,3 +29,9 @@ Keep documentation and comments tied to one source of truth. Avoid copying API d
 9. Do not write comments that explain only what the code does instead of why it exists.
 10. Do not keep stale TODO or FIXME comments without an owner or removal condition.
 
+## Additional Constraints
+
+1. Documentation must point to the source of truth for values, defaults, routes, flags, and public APIs instead of copying change-prone details.
+2. Comments must not restate code; they must explain non-obvious business rules, boundary decisions, constraints, or tradeoffs.
+3. Do not keep parallel docs for the same rule unless each document has a distinct audience and one canonical owner is identified.
+4. TODO and FIXME notes must identify the boundary, trigger, or condition that determines when the note should be resolved.

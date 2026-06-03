@@ -30,3 +30,9 @@ Use this reference when stores, pages, modules, or components maintain the same 
 12. Do not lift temporary UI state into a global store.
 13. Do not keep cross-page shared state inside a local component.
 
+## Additional Constraints
+
+1. Each state value must have one authority: local interaction state, URL state, store state, or server state.
+2. Derived state must be computed from its authority and must not expose independent write paths.
+3. Optimistic state must define reconciliation, rollback, and invalidation behavior at the same boundary that performs the mutation.
+4. Do not duplicate loading, empty, stale, dirty, selected, expanded, or pagination state across component, store, and query boundaries.

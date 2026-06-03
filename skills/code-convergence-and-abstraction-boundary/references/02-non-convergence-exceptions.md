@@ -20,3 +20,9 @@ Use this reference when repetition is local, semantics differ, future change dir
 3. Do not confuse different naming with different domain semantics.
 4. Do not use exceptions to hide fake abstractions, thin wrappers, or concept drift.
 
+## Additional Constraints
+
+1. When keeping repetition under an exception, state the different semantic owner or expected change direction.
+2. Exploratory duplication is allowed only while the rule is unstable; once the behavior becomes reused or release-critical, re-evaluate convergence.
+3. Framework-required repetition is allowed only for declarations the framework actually requires; do not duplicate surrounding business rules, defaults, validation, or side effects.
+4. Test repetition is acceptable for scenario clarity, but duplicated production rules inside test helpers or mocks must still converge to the same source of truth.

@@ -55,3 +55,10 @@ type UserForm = Pick<IUser, 'name'>
 ```
 
 Split DTO, Form, Model, or View types only when data ownership, validation timing, optionality, lifecycle, or business semantics differ.
+
+## Additional Constraints
+
+1. Keep runtime schemas, validation schemas, const value domains, and TypeScript value domains derived from the same source when they describe the same business values.
+2. Do not create separate request, response, form, and view types unless optionality, validation timing, mutability, lifecycle, or trust boundary differs.
+3. Do not hide a shared domain type behind local aliases that prevent callers from recognizing the same entity.
+4. When a type split is valid, name the split after the real boundary, such as persistence, transport, form input, or display projection.

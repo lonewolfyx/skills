@@ -36,3 +36,9 @@ Organize tests around observable behavior. Keep test data, helpers, and fixtures
 11. Do not test implementation details instead of behavioral outcomes.
 12. Do not add meaningless tests only because a thin wrapper exists.
 
+## Additional Constraints
+
+1. Shared test helpers must encode setup mechanics, not hide the behavior being asserted.
+2. Mocks, fixtures, and builders that represent the same domain entity must share defaults from one test data boundary.
+3. Do not duplicate production business rules inside mocks or fixtures; import the trusted production rule when the test needs the same behavior.
+4. When converging production behavior, update tests to assert the shared rule once and keep scenario-specific assertions explicit.

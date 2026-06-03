@@ -23,3 +23,9 @@ Use this reference when code touches event listeners, subscriptions, timers, key
 7. Do not scatter side-effect logic across multiple lifecycle hooks without a unified owner.
 8. Do not trigger the same side effect from `watch`, events, and store subscriptions without an explicit boundary.
 
+## Additional Constraints
+
+1. Each subscription must have one lifecycle owner responsible for registration, cleanup, and dependency changes.
+2. Do not create anonymous listener functions when cleanup requires the same function identity.
+3. Repeated debounce, throttle, visibility, resize, scroll, keyboard, or polling behavior must converge into a single side-effect boundary.
+4. Side effects that update shared state must not be duplicated in both UI components and stores.

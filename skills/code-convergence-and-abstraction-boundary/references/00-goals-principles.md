@@ -19,3 +19,9 @@ Use this reference before implementing, refactoring, cleaning up, reviewing, ext
 3. Do not allow one capability to have multiple trusted entry points.
 4. Do not keep an abstraction if it makes the system harder to understand, harder to change, or harder to test.
 
+## Additional Constraints
+
+1. Before extracting shared code, identify the semantic owner, current call sites, expected future change direction, and the rule that would become the trusted entry point.
+2. Convergence must not move low-level utilities into high-level domain modules or high-level business rules into generic utility modules.
+3. A shared abstraction must preserve the original error semantics, side-effect timing, and data ownership boundaries of the code it replaces.
+4. When convergence changes a public entry point, keep the migration path explicit and remove deprecated duplicate entry points once callers are migrated.
