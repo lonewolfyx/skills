@@ -1,6 +1,6 @@
 ---
 name: code-convergence-and-abstraction-boundary
-description: Use when detecting duplicate logic, deciding whether to converge repeated code, or reviewing abstraction boundaries, thin wrappers, pseudo-architecture, mirror values, uncontrolled complexity, and concept drift.
+description: Use whenever developing, writing, refactoring, reviewing, or cleaning code in a project to enforce the repository's code convergence and abstraction boundary rules.
 ---
 
 # Code Convergence and Abstraction Boundary

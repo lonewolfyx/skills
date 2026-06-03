@@ -1,6 +1,6 @@
 interface:
   display_name: Code Convergence Boundary
-  short_description: Enforce convergence and abstraction boundaries
+  short_description: Enforce repository code convergence and abstraction boundary rules
   default_prompt: Use $code-convergence-and-abstraction-boundary to implement, review, refactor, or clean code under the project's convergence and abstraction boundary rules.
 
 policy:
