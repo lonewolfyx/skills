@@ -1,0 +1,7 @@
+interface:
+  display_name: Project Code Smell Report
+  short_description: Generate code smell and technical debt reports
+  default_prompt: Use $project-code-smell-report to scan this project and produce a code smell debt report.
+
+policy:
+  allow_implicit_invocation: true

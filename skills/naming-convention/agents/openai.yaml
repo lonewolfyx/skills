@@ -2,3 +2,6 @@ interface:
   display_name: Naming Convention
   short_description: Enforce naming conventions for functions, constants, variables, and config parameters
   default_prompt: Use $naming-convention to check and fix naming conventions for functions, constants, variables, and config parameters in my code.
+
+policy:
+  allow_implicit_invocation: true

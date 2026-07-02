@@ -2,3 +2,6 @@ interface:
   display_name: TS Type Naming
   short_description: Enforce TypeScript interface/type naming conventions
   default_prompt: Use $ts-type-naming to check and fix TypeScript type naming conventions in my code.
+
+policy:
+  allow_implicit_invocation: true

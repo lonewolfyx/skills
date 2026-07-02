@@ -76,6 +76,8 @@ Reference files are the source of truth. SKILL.md should link to them and summar
 |-------|---------|
 | `git-commit-message` | Generating or reviewing git commit messages |
 | `review-code-quality` | Auditing code for readability, maintainability, bugs, coupling |
+| `project-code-smell-report` | Scanning or auditing a codebase to produce an evidence-backed code smell and technical debt report |
 | `ts-type-naming` | Enforcing TypeScript type naming conventions (`I` prefix for interfaces, camelCase for types) |
 | `naming-convention` | Enforcing naming conventions for functions, constants, variables, and config parameters |
 | `code-convergence-and-abstraction-boundary` | Developing, writing, refactoring, reviewing, or cleaning project code to enforce repository code convergence and abstraction boundary rules |
+| `unjs-development` | Choosing suitable UnJS packages and implementation practices by JavaScript or TypeScript development scenario |
